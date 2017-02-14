@@ -6,6 +6,8 @@
 
 <button class="btn btn-success" id="ajax-btn">Click me...</button>
 
+<?php debug($categories); ?>
+
 <?php
 $js = <<< JS
     (function ($) {

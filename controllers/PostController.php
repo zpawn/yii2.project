@@ -8,6 +8,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\TestForm;
+use app\models\Category;
 
 class PostController extends AppController {
 
@@ -55,6 +56,30 @@ class PostController extends AppController {
             'content' => 'описание страницы'
         ]);
 
-        return $this->render('show');
+//        $categories = Category::find()->all();
+//        $categories = Category::find()->orderBy(['id' => SORT_DESC])->all();
+//        $categories = Category::find()->asArray()->all();
+
+//        $categories = Category::find()->asArray()->where('parent = 691')->all();
+//        $categories = Category::find()->asArray()->where(['parent' => 691])->all();
+//        $categories = Category::find()->asArray()->where(['like', 'title', 'pp'])->all();
+//        $categories = Category::find()->asArray()->where(['<=', 'id', '695'])->all();
+
+//        $categories = Category::find()->asArray()->where(['parent' => 691])->limit(1)->all();
+//        $categories = Category::find()->asArray()->where(['parent' => 691])->limit(1)->one();
+
+//        $categories = Category::find()->asArray()->where(['parent' => 691])->limit(1)->count();
+//        $categories = Category::find()->asArray()->count();
+
+//        $categories = Category::findOne(['parent' => 691]);
+//        $categories = Category::findAll(['parent' => 691]);
+
+//        $query = "SELECT * FROM categories WHERE title LIKE '%pp%'";
+//        $categories = Category::findBySql($query)->all();
+
+        $query = "SELECT * FROM categories WHERE title LIKE :search";
+        $categories = Category::findBySql($query, ['search' => '%pp%'])->all();
+
+        return $this->render('show', compact('categories'));
     }
 } 
