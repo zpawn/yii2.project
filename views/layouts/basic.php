@@ -12,8 +12,7 @@ AppAsset::register($this);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--    --><?//= Html::csrfMetaTags(); ?>
-    <title>Document</title>
+    <title><?= $this->title; ?></title>
     <?php $this->head(); ?>
 </head>
 <body>
@@ -27,6 +26,10 @@ AppAsset::register($this);
                 <li role="presentation"><?= Html::a('Blog', ['post/index']); ?></li>
                 <li role="presentation"><?= Html::a('Post', ['post/show']) ?></li>
             </ul>
+
+            <?php if (isset($this->blocks['blockShow'])): ?>
+                <?= $this->blocks['blockShow'] ?>
+            <?php endif; ?>
 
             <?= $content; ?>
         </div>

@@ -1,3 +1,11 @@
+<?php
+//$this->title = 'One Article';
+?>
+
+<?php $this->beginBlock('blockShow'); ?>
+<h1>Title Page</h1>
+<?php $this->endBlock(); ?>
+
 <h2>Show Action</h2>
 
 <button class="btn btn-success" id="ajax-btn">Click me...</button>
