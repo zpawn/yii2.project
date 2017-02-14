@@ -23,18 +23,9 @@ class TestForm extends Model {
     }
 
     public function rules () {
-        /*
-        return [
-            ['name', 'required', 'message' => 'Error message in field \'name\''],
-            ['email', 'required'],
-        ];
-        */
-        // or all in one
         return [
             [['name', 'email'], 'required'],
             ['email', 'email'],
-//            ['name', 'string', 'min' => 2, 'tooShort' => 'Wrong, too short'],
-//            ['name', 'string', 'max' => 5, 'tooLong' => 'largest name']
             ['name', 'string', 'length' => [2, 5]],
             ['name', 'myRule'],
             ['text', 'trim']

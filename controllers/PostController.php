@@ -29,6 +29,16 @@ class PostController extends AppController {
 
         $model = new TestForm();
 
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                Yii::$app->session->setFlash('success', 'data load success');
+                // for clear form from data
+                return $this->refresh();
+            } else {
+                Yii::$app->session->setFlash('error', 'data load error');
+            }
+        }
+
         $this->view->title = 'All Articles';
         return $this->render('index', compact('model'));
     }
