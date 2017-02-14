@@ -7,6 +7,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\TestForm;
 
 class PostController extends AppController {
 
@@ -22,16 +23,17 @@ class PostController extends AppController {
 
     public function actionIndex () {
         if (Yii::$app->request->isAjax) {
-//            debug($_REQUEST);
             debug(Yii::$app->request->post());
-        } else {
-            return $this->render('index');
+            return 'test';
         }
+
+        $model = new TestForm();
+
+        $this->view->title = 'All Articles';
+        return $this->render('index', compact('model'));
     }
 
     public function actionShow () {
-        // template for this action
-        //$this->layout = 'basic';
 
         $this->view->title = 'One Article';
         $this->view->registerMetaTag([
