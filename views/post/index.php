@@ -15,9 +15,9 @@ use yii\helpers\Html;
     ]
 ]); ?>
 
-<?= $form->field($model, 'name')->label('Firstname, Lastname'); ?>
+<?= $form->field($model, 'name'); ?>
 <?= $form->field($model, 'email')->input('email'); ?>
-<?= $form->field($model, 'text')->label('Message')->textarea(['rows' => 5]); ?>
+<?= $form->field($model, 'text')->textarea(['rows' => 5]); ?>
 
 <?= Html::submitButton('Send', [
     'class' => 'btn btn-success'
