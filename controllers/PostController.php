@@ -56,30 +56,12 @@ class PostController extends AppController {
             'content' => 'описание страницы'
         ]);
 
-//        $categories = Category::find()->all();
-//        $categories = Category::find()->orderBy(['id' => SORT_DESC])->all();
-//        $categories = Category::find()->asArray()->all();
+        // Lazy load (ленивая загрузка) - объединение таблиц не происходит пока мы не обратимся к ее данным
+        $categoryLazyLoad = Category::findOne(694);
 
-//        $categories = Category::find()->asArray()->where('parent = 691')->all();
-//        $categories = Category::find()->asArray()->where(['parent' => 691])->all();
-//        $categories = Category::find()->asArray()->where(['like', 'title', 'pp'])->all();
-//        $categories = Category::find()->asArray()->where(['<=', 'id', '695'])->all();
+        // Eager Load (жадная загрузка) - таблицы джойнятся сразу
+        $categoryEagerLoad = Category::find()->with('products')->where(['id' => 694])->all();
 
-//        $categories = Category::find()->asArray()->where(['parent' => 691])->limit(1)->all();
-//        $categories = Category::find()->asArray()->where(['parent' => 691])->limit(1)->one();
-
-//        $categories = Category::find()->asArray()->where(['parent' => 691])->limit(1)->count();
-//        $categories = Category::find()->asArray()->count();
-
-//        $categories = Category::findOne(['parent' => 691]);
-//        $categories = Category::findAll(['parent' => 691]);
-
-//        $query = "SELECT * FROM categories WHERE title LIKE '%pp%'";
-//        $categories = Category::findBySql($query)->all();
-
-        $query = "SELECT * FROM categories WHERE title LIKE :search";
-        $categories = Category::findBySql($query, ['search' => '%pp%'])->all();
-
-        return $this->render('show', compact('categories'));
+        return $this->render('show', compact('categoryLazyLoad', 'categoryEagerLoad'));
     }
 } 

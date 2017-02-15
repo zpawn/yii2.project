@@ -6,7 +6,12 @@
 
 <button class="btn btn-success" id="ajax-btn">Click me...</button>
 
-<?php debug($categories); ?>
+<!-- Lazy Load -->
+<?php debug($categoryLazyLoad); ?>
+<?= count($categoryLazyLoad->products); ?><!-- Дополнительный запрос происходит здесь -->
+
+<!-- Eager Load -->
+<?php debug($categoryEagerLoad); ?>
 
 <?php
 $js = <<< JS
