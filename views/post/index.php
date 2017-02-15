@@ -7,11 +7,9 @@ use yii\helpers\Html;
 
 <h1>Index Action</h1>
 
-<?php //debug($model); ?>
-
 <?php $form = ActiveForm::begin([
     'options' => [
-        'id' => 'testForm'
+        'id' => 'postForm'
     ]
 ]); ?>
 
@@ -29,9 +27,9 @@ use yii\helpers\Html;
     </div>
 <?php endif; ?>
 
-<?= $form->field($model, 'name'); ?>
-<?= $form->field($model, 'email')->input('email'); ?>
-<?= $form->field($model, 'text')->textarea(['rows' => 5]); ?>
+<?= $form->field($post, 'name'); ?>
+<?= $form->field($post, 'email')->input('email'); ?>
+<?= $form->field($post, 'text')->textarea(['rows' => 5]); ?>
 
 <?= Html::submitButton('Send', [
     'class' => 'btn btn-success'

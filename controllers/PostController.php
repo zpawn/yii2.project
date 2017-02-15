@@ -7,7 +7,7 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\TestForm;
+use app\models\Post;
 use app\models\Category;
 
 class PostController extends AppController {
@@ -28,10 +28,10 @@ class PostController extends AppController {
             return 'test';
         }
 
-        $model = new TestForm();
+        $post = new Post();
 
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
+        if ($post->load(Yii::$app->request->post())) {
+            if ($post->save()) {
                 Yii::$app->session->setFlash('success', 'data load success');
                 // for clear form from data
                 return $this->refresh();
@@ -41,7 +41,7 @@ class PostController extends AppController {
         }
 
         $this->view->title = 'All Articles';
-        return $this->render('index', compact('model'));
+        return $this->render('index', compact('post'));
     }
 
     public function actionShow () {
@@ -57,7 +57,7 @@ class PostController extends AppController {
         ]);
 
         // Lazy Load
-        // uncommented and see how count query into db (when many joined data)
+        // uncommented and see how count query into db (when many data)
         // $categories = Category::find()->all();
 
         // Eager Load
