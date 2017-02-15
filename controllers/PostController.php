@@ -56,12 +56,13 @@ class PostController extends AppController {
             'content' => 'описание страницы'
         ]);
 
-        // Lazy load (ленивая загрузка) - объединение таблиц не происходит пока мы не обратимся к ее данным
-        $categoryLazyLoad = Category::findOne(694);
+        // Lazy Load
+        // uncommented and see how count query into db (when many joined data)
+        // $categories = Category::find()->all();
 
-        // Eager Load (жадная загрузка) - таблицы джойнятся сразу
-        $categoryEagerLoad = Category::find()->with('products')->where(['id' => 694])->all();
+        // Eager Load
+        $categories = Category::find()->with('products')->all();
 
-        return $this->render('show', compact('categoryLazyLoad', 'categoryEagerLoad'));
+        return $this->render('show', compact('categories'));
     }
 } 
