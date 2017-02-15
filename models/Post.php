@@ -24,7 +24,7 @@ class Post extends ActiveRecord {
 
     public function rules () {
         return [
-            [['name', 'email'], 'required'],
+            ['name', 'required'],
             [['name', 'email', 'text'], 'trim'],
             ['email', 'email'],
         ];

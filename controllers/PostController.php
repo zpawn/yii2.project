@@ -28,6 +28,16 @@ class PostController extends AppController {
             return 'test';
         }
 
+        // Update
+//        $post = Post::findOne(3);
+//        $post->email = 'armen.tamzarian@gmail.com';
+//        $post->save();
+
+        // Delete
+//        $post->delete();
+//        Post::deleteAll(['>', 'id', 2]);
+//        Post::deleteAll();  // Remove all data in table
+
         $post = new Post();
 
         if ($post->load(Yii::$app->request->post())) {
