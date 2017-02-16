@@ -43,22 +43,8 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            // add to the end of the line
-            'suffix' => '.html',
             'rules' => [
-                // remove suffix on index page
-                [
-                    'pattern' => '',
-                    'route' => 'site/index',
-                    'suffix' => ''
-                ],
-//                'about' => 'site/about',
-//                'contact' =>'site/contact',
-//                'login' => 'site/login'
-                // or use regex
                 '<action:(about|contact|login)>' => 'site/<action>',
-                // all rules
-//                '<action:\w+>' => 'site/<action>'
             ],
         ],
     ],
