@@ -29,6 +29,7 @@ use yii\helpers\Html;
 
 <?= $form->field($post, 'name'); ?>
 <?= $form->field($post, 'email')->input('email'); ?>
+<?= yii\jui\DatePicker::widget(['name' => 'attributeName']) ?>
 <?= $form->field($post, 'text')->textarea(['rows' => 5]); ?>
 
 <?= Html::submitButton('Send', [
