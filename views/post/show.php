@@ -1,8 +1,15 @@
+<?php
+use app\components\MyWidget;
+?>
+
 <?php $this->beginBlock('blockShow'); ?>
 <h1>Title Page</h1>
 <?php $this->endBlock(); ?>
 
 <h2>Show Action</h2>
+
+<?= MyWidget::widget(); ?>
+<?= MyWidget::widget(['name' => 'Vasia']); ?>
 
 <button class="btn btn-success" id="ajax-btn">Click me...</button>
 
@@ -10,7 +17,7 @@
 <?php foreach($categories as $categoty): ?>
     <li>
         <?= $categoty->title ?>
-        <ul>
+        <ul class="hidden">
         <?php foreach($categoty->products as $product): ?>
             <li><?= $product->title; ?></li>
         <?php endforeach; ?>

@@ -3,6 +3,8 @@
 use app\assets\AppAsset;
 use yii\helpers\Html;
 
+use app\components\PostFooterWidget;
+
 AppAsset::register($this);
 ?>
 
@@ -33,7 +35,10 @@ AppAsset::register($this);
 
             <?= $content; ?>
         </div>
+
     </div>
+
+    <?= PostFooterWidget::widget(); ?>
 
 <?php $this->endBody(); ?>
 </body>
