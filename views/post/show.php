@@ -8,8 +8,9 @@ use app\components\MyWidget;
 
 <h2>Show Action</h2>
 
-<?= MyWidget::widget(); ?>
-<?= MyWidget::widget(['name' => 'Vasia']); ?>
+<?php MyWidget::begin(); ?>
+<h3>this is user-generated content!</h3>
+<?php MyWidget::end(); ?>
 
 <button class="btn btn-success" id="ajax-btn">Click me...</button>
 

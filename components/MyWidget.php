@@ -15,10 +15,12 @@ class MyWidget extends Widget {
 
     public function init () {
         parent::init();
-        if ($this->name === null) $this->name = 'Guest';
+        ob_start();
     }
 
     public function run () {
-        return "<h3>{$this->name}, Hello, World!</h3>";
+        $content = ob_get_clean();
+        $content = mb_strtoupper($content);
+        return $this->render('my', compact('content'));
     }
 } 
