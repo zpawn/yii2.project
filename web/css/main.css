@@ -8,9 +8,8 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background:;
   position: relative;
-  font-weight:400px;
+  font-weight: 400;
 }
 
 ul li {
@@ -169,7 +168,6 @@ a#scrollUp i{
 
 .usa:active, .usa.active {
   background: none repeat scroll 0 0 #FE980F;
-  box-shadow: inherit;
   outline: 0 none;
 }
 
@@ -914,7 +912,6 @@ h2.title {
   transition: height 500ms ease 0s;
   width: 100%;
   display: block;
-  opacity:;
 }
 
 .single-products:hover .product-overlay {
@@ -2156,7 +2153,7 @@ h2.title {
 
 .rating-area {
   border: 1px solid #F7F7F0;
-  direction: block;
+  direction: inherit;
   overflow: hidden;
 }
 
@@ -2450,8 +2447,7 @@ h2.title {
   margin-bottom: 20px;
 }
 
-#contact-page 
-.form-control::-moz-placeholder {
+#contact-page .form-control::-moz-placeholder {
   color: #8D8D8D;
 }
 
@@ -2464,7 +2460,6 @@ h2.title {
   width: 100%;
   font-size: 16px;
   border-radius: 4px;
-  box-shadow:inherit;
 }
 
 #contact-page #message {
@@ -2480,7 +2475,6 @@ h2.title {
 
 #contact-page .form-control:focus, 
 #contact-page .form-control:hover {
-  box-shadow: inherit;
   border-color: #FDB45E;
 }
 

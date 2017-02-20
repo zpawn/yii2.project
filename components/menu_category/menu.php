@@ -1,5 +1,9 @@
+<?php
+use yii\helpers\Url;
+?>
+
 <li>
-    <a href="javascript:void(0)">
+    <a href="<?= Url::to(['category/view', 'id' => $category['id']]); ?>">
         <?= $category['name']; ?>
         <?php if (isset($category['childs'])): ?>
             <span class="badge pull-right"><i class="fa fa-plus"></i></span>
