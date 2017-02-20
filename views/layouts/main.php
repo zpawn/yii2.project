@@ -7,13 +7,11 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-
 use app\assets\AppAsset;
-AppAsset::register($this);
+use app\assets\LtAppAsset;
 
-// var.1: include scripts in Assets
-//use app\assets\LtAppAsset;
-//LtAppAsset::register($this);
+AppAsset::register($this);
+LtAppAsset::register($this);
 
 ?>
 
@@ -26,18 +24,6 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags(); ?>
     <title><?= Html::encode($this->title); ?></title>
     <?php $this->head(); ?>
-
-    <?php
-    // var.2 include scripts in template
-    $this->registerJsFile('js/html5shiv.js', [
-        'condition' => 'lte IE9',
-        'position' => \yii\web\View::POS_HEAD
-    ]);
-    $this->registerJsFile('js/respond.min.js', [
-        'condition' => 'lte IE9',
-        'position' => \yii\web\View::POS_HEAD
-    ]);
-    ?>
 
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
