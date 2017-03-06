@@ -4,9 +4,11 @@
  * @var $this yii\web\View
  * @var $products yii\web\View
  * @var $category yii\web\View
+ * @var $pages yii\web\View
  */
 
 use yii\helpers\Html;
+use yii\widgets\LinkPager;
 ?>
 
 
@@ -107,19 +109,13 @@ use yii\helpers\Html;
                 <?php $i += 1; ?>
                 <?php if ($i % 3 === 0) echo '<div class="clearfix"></div>'; ?>
             <?php endforeach; ?>
+
+            <div class="row">
+                <?= LinkPager::widget(['pagination' => $pages]); ?>
+            </div>
         <?php else: ?>
             <h2>Empty Category</h2>
         <?php endif; ?>
-    </div>
-
-
-    <div class="row">
-        <ul class="pagination">
-            <li class="active"><a href="">1</a></li>
-            <li><a href="">2</a></li>
-            <li><a href="">3</a></li>
-            <li><a href="">&raquo;</a></li>
-        </ul>
     </div>
 </div>
 <!--features_items-->
