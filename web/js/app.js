@@ -11,13 +11,18 @@
         $('#cartModal').modal();
     }
 
+    /**
+     * Add product to Cart
+     */
     $('.add-to-cart').on('click', function (event) {
         event.preventDefault();
-        var id = $(event.target).data('id');
+        var id = $(event.target).data('id'),
+            qty = $('#qty').val();
         $.ajax({
             url: '/cart/add',
             data: {
-                id: id
+                id: id,
+                qty: qty
             },
             method: 'get',
             success: function (res) {

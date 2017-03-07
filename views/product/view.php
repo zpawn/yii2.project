@@ -119,15 +119,15 @@ use app\components\MenuCategoryWidget;
 
             <p>Web ID: 1089772</p>
             <img src="/images/product-details/rating.png" alt=""/>
-								<span>
-									<span>US $<?= $product->price ?></span>
-									<label>Quantity:</label>
-									<input type="text" value="1"/>
-									<button type="button" class="btn btn-fefault cart">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        Add to cart
-                                    </button>
-								</span>
+            <span>
+                <span>US $<?= $product->price ?></span>
+                <label>Quantity:</label>
+                <input type="text" value="1" id="qty"/>
+                <a href="#" class="btn btn-default add-to-cart cart" data-id="<?= $product->id; ?>">
+                    <i class="fa fa-shopping-cart"></i>
+                    Add to cart
+                </a>
+            </span>
 
             <p><b>Availability:</b> In Stock</p>
 
