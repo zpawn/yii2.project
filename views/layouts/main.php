@@ -7,6 +7,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use app\assets\AppAsset;
 use app\assets\LtAppAsset;
+use yii\bootstrap\Modal;
 
 AppAsset::register($this);
 LtAppAsset::register($this);
@@ -314,6 +315,18 @@ LtAppAsset::register($this);
     </div>
 
 </footer><!--/Footer-->
+
+<?php Modal::begin([
+    'id' => 'cartModal',
+    'size' => Modal::SIZE_LARGE,
+    'header' => '<h2>This is Cart</h2>',
+    'footer' => '
+        <button type="button" class="btn btn-default" data-dismiss="modal">Continue</button>
+        <button type="button" class="btn btn-danger">Clear Cart</button>
+        <button type="button" class="btn btn-success">Checkout</button>
+    '
+]); ?>
+<?php Modal::end(); ?>
 
 <?php $this->endBody(); ?>
 </body>

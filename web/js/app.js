@@ -6,6 +6,11 @@
 (function ($) {
     'use strict';
 
+    function showCart (cart) {
+        $('#cartModal .modal-body').html(cart);
+        $('#cartModal').modal();
+    }
+
     $('.add-to-cart').on('click', function (event) {
         event.preventDefault();
         var id = $(event.target).data('id');
@@ -19,7 +24,7 @@
                 if (!res) {
                     console.log('product not found');
                 }
-                console.log(res);
+                showCart(res);
             },
             error: function (res) {
                 console.log('error');
