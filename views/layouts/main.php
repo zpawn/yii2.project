@@ -322,7 +322,7 @@ LtAppAsset::register($this);
     'header' => '<h2>This is Cart</h2>',
     'footer' => '
         <button type="button" class="btn btn-default" data-dismiss="modal">Continue</button>
-        <button type="button" class="btn btn-danger">Clear Cart</button>
+        <button type="button" class="btn btn-danger clearCart">Clear Cart</button>
         <button type="button" class="btn btn-success">Checkout</button>
     '
 ]); ?>

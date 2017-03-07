@@ -21,11 +21,11 @@
                 </tr>
             <?php endforeach; ?>
             <tr>
-                <td colspan="4"><strong>Total qty:</strong></td>
+                <td colspan="4" class="text-right"><strong>Total qty:</strong></td>
                 <td><?= $session['cart.qty'] ?></td>
             </tr>
             <tr>
-                <td colspan="4"><strong>Total sum:</strong></td>
+                <td colspan="4" class="text-right"><strong>Total sum:</strong></td>
                 <td><?= $session['cart.sum'] ?></td>
             </tr>
             </tbody>
