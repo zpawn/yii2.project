@@ -31,7 +31,8 @@ class AppAsset extends AssetBundle
         'js/jquery.accordion.js',
         'js/jquery.cookie.js',
         'js/price-range.js',
-        'js/main.js'
+        'js/main.js',
+        'js/app.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
