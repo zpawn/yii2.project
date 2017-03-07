@@ -34,6 +34,13 @@ use Yii;
  */
 class CartController extends AppController {
 
+    public function actionShow () {
+        $session = Yii::$app->session;
+        $session->open();
+        $this->layout = false;
+        return $this->render('cart-modal', compact('session'));
+    }
+
     public function actionAdd () {
         $id = Yii::$app->request->get('id');
         $product = Product::findOne($id);
@@ -56,6 +63,18 @@ class CartController extends AppController {
         $session->remove('cart');
         $session->remove('cart.qty');
         $session->remove('cart.sum');
+
+        $this->layout = false;
+        return $this->render('cart-modal', compact('session'));
+    }
+
+    public function actionRemove () {
+        $id = Yii::$app->request->get('id');
+        $session = Yii::$app->session;
+        $session->open();
+
+        $cart = new Cart();
+        $cart->removeFromCart($id);
 
         $this->layout = false;
         return $this->render('cart-modal', compact('session'));

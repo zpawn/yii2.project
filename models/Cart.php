@@ -28,4 +28,18 @@ class Cart extends ActiveRecord {
         $_SESSION['cart.qty'] = isset($_SESSION['cart.qty']) ? $_SESSION['cart.qty'] + $qty : $qty;
         $_SESSION['cart.sum'] = isset($_SESSION['cart.sum']) ? $_SESSION['cart.sum'] + ($qty * $product->price) : ($qty * $product->price);
     }
+
+    public function removeFromCart ($id) {
+
+        if (!isset($_SESSION['cart'][$id])) {
+            return false;
+        }
+
+        $removedProducts = $_SESSION['cart'][$id];
+        $_SESSION['cart.qty'] -= $removedProducts['qty'];
+        $_SESSION['cart.sum'] -= $removedProducts['price'] * $removedProducts['qty'];
+        unset($_SESSION['cart'][$id], $removedProducts);
+
+        return true;
+    }
 } 

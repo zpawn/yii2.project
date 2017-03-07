@@ -13,11 +13,14 @@
             <tbody>
             <?php foreach ($session['cart'] as $id => $product): ?>
                 <tr>
-                    <td><?= $product['img']; ?></td>
-                    <td><?= $product['name']; ?></td>
+                    <td><?= \yii\helpers\Html::img("@web/images/products/{$product['img']}", [
+                            'alt' => $product['name'],
+                            'height' => 50
+                        ]); ?></td>
+                    <td><a href="<?= \yii\helpers\Url::to(['product/view', 'id' => $id]); ?>"><?= $product['name']; ?></a></td>
                     <td><?= $product['qty']; ?></td>
                     <td><?= $product['price']; ?></td>
-                    <td><span class="glyphicon glyphicon-remove text-danger remove-from-cart"></span></td>
+                    <td><span class="glyphicon glyphicon-remove text-danger remove-from-cart" data-id="<?= $id; ?>"></span></td>
                 </tr>
             <?php endforeach; ?>
             <tr>
