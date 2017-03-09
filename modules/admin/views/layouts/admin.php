@@ -100,7 +100,7 @@ LtAppAsset::register($this);
                             <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                             <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="#" id="showCartModal"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <?php if (Yii::$app->user->isGuest): ?>
+                            <?php if (!Yii::$app->user->isGuest): ?>
                             <li>
                                 <a href="<?= Url::to(['/site/logout']); ?>">
                                     <i class="fa fa-user"></i>
@@ -162,7 +162,9 @@ LtAppAsset::register($this);
     </div><!--/header-bottom-->
 </header><!--/header-->
 
-<?= $content; ?>
+<div class="container">
+    <?= $content; ?>
+</div>
 
 <footer id="footer"><!--Footer-->
 

@@ -12,7 +12,8 @@ $config = [
         // create modules for adminka
         'admin' => [
             'class' => 'app\modules\admin\Module',
-            'layout' => 'admin'
+            'layout' => 'admin',
+            'defaultRoute' => 'order/index'
         ],
     ],
     'components' => [
