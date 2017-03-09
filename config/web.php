@@ -8,6 +8,13 @@ $config = [
     'bootstrap' => ['log'],
     'defaultRoute' => 'category/index',
     'language' => 'ru-RU',
+    'modules' => [
+        // create modules for adminka
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'layout' => 'admin'
+        ],
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
