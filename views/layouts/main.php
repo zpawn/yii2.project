@@ -323,7 +323,7 @@ LtAppAsset::register($this);
     'footer' => '
         <button type="button" class="btn btn-default" data-dismiss="modal">Continue</button>
         <button type="button" class="btn btn-danger clearCart">Clear Cart</button>
-        <button type="button" class="btn btn-success">Checkout</button>
+        <a href="'. Url::to(['cart/view']) .'" class="btn btn-success">Checkout</a>
     '
 ]); ?>
 <?php Modal::end(); ?>

@@ -7,9 +7,11 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Product;
 use app\models\Cart;
-use Yii;
+use app\models\Order;
+use app\models\OrderItems;
 
 /**
  * Class CartController
@@ -84,5 +86,19 @@ class CartController extends AppController {
 
         $this->layout = false;
         return $this->render('cart-modal', compact('session'));
+    }
+
+    public function actionView () {
+        $session = Yii::$app->session;
+        $session->open();
+
+        $order = new Order();
+
+        if ($order->load(Yii::$app->request->post())) {
+            debug(Yii::$app->request->post());
+        }
+
+        $this->setMeta('This is Cart');
+        return $this->render('view', compact('session', 'order'));
     }
 }
