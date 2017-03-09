@@ -27,6 +27,8 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            // change login controller
+            // 'loginUrl' => 'cart/view'
         ],
         'errorHandler' => [
             // template for error
