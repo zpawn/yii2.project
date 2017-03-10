@@ -17,6 +17,7 @@ class MenuCategoryWidget extends Widget {
     public $data;
     public $tree;
     public $menuHtml;
+    public $model;
 
     public function init () {
         parent::init();
@@ -28,21 +29,25 @@ class MenuCategoryWidget extends Widget {
 
     public function run () {
 
-        // get Cache
-        $menu = Yii::$app->cache->get('categoryMenu');
-        // and return menu
-        if ($menu) return $menu;
+        if ($this->tpl == 'menu.php') {
+            // get Cache
+            $menu = Yii::$app->cache->get('categoryMenu');
+            // and return menu
+            if ($menu) return $menu;
+        }
 
         $this->data = Category::find()->indexBy('id')->asArray()->all();
         $this->tree = $this->getTree();
         $this->menuHtml = $this->getMenuHtml($this->tree);
 
-        /**
-         * set menu name
-         * chached template
-         * live time
-         */
-        Yii::$app->cache->set('categoryMenu', $this->menuHtml, 60 * 60);
+        if ($this->tpl == 'menu.php') {
+            /**
+             * set menu name
+             * chached template
+             * live time
+             */
+            Yii::$app->cache->set('categoryMenu', $this->menuHtml, 60);
+        }
         return $this->menuHtml;
     }
 
@@ -58,15 +63,15 @@ class MenuCategoryWidget extends Widget {
         return $tree;
     }
 
-    protected function getMenuHtml ($tree) {
+    protected function getMenuHtml ($tree, $tab = '') {
         $str = '';
         foreach ($tree as $category) {
-            $str .= $this->categoryToTemplate($category);
+            $str .= $this->categoryToTemplate($category, $tab);
         }
         return $str;
     }
 
-    protected function categoryToTemplate ($category) {
+    protected function categoryToTemplate ($category, $tab) {
         ob_start();
         include(__DIR__ . '/menu_category/' . $this->tpl);
         return ob_get_clean();

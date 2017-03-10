@@ -64,6 +64,7 @@ class CategoryController extends AppAdminController {
         $model = new Category();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', "Category '{$model->name}' created");
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
