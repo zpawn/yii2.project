@@ -68,12 +68,13 @@ use yii\widgets\LinkPager;
                     <div class="row">
                         <?php if (!empty($products)): ?>
                             <?php $i = 0; foreach ($products as $product): ?>
+                                <?php $image = $product->getImage(); ?>
                                 <div class="col-sm-4">
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <a href="<?= Url::to(['product/view', 'id' => $product->id]); ?>">
-                                                    <?= Html::img("@web/images/products/{$product->img}", ['alt' => $product->name]); ?>
+                                                    <?= Html::img($image->getUrl(), ['alt' => $product->name]); ?>
                                                 </a>
 
                                                 <h2>$<?= $product->price ?></h2>
