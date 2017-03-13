@@ -21,12 +21,23 @@ use yii\db\ActiveRecord;
  * @property string $sale
  */
 class Product extends ActiveRecord {
+
+    public $image;
+    public $gallery;
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName () {
         return 'product';
+    }
+
+    public function behaviors () {
+        return [
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
+        ];
     }
 
     public function getCategory () {
@@ -44,6 +55,8 @@ class Product extends ActiveRecord {
             [['content', 'hit', 'new', 'sale'], 'string'],
             [['price'], 'number'],
             [['name', 'keywords', 'description', 'img'], 'string', 'max' => 255],
+            [['image'], 'file', 'extensions' => 'png, jpg'],
+            [['gallery'], 'file', 'extensions' => 'png, jpg', 'maxFiles' => 4],
         ];
     }
 
@@ -60,10 +73,39 @@ class Product extends ActiveRecord {
             'price' => 'Price',
             'keywords' => 'Keywords',
             'description' => 'Description',
-            'img' => 'Img',
+            'image' => 'Image',
+            'gallery' => 'Gallery',
             'hit' => 'Hit',
             'new' => 'New',
             'sale' => 'Sale',
         ];
+    }
+
+    public function upload () {
+
+        if ($this->validate()) {
+            $path = 'upload/store/' . $this->image->baseName .'.'. $this->image->extension;
+            $this->image->saveAs($path);
+            $this->attachImage($path, true);
+            @unlink($path);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function uploadGallery () {
+
+        if ($this->validate()) {
+            foreach ($this->gallery as $file) {
+                $path = 'upload/store/' . $file->baseName .'.'. $file->extension;
+                $file->saveAs($path);
+                $this->attachImage($path);
+                @unlink($path);
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 }
