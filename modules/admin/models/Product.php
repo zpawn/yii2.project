@@ -10,6 +10,7 @@ use yii\db\ActiveRecord;
  *
  * @property integer $id
  * @property integer $category_id
+ * @property integer $update_count
  * @property string $name
  * @property string $content
  * @property double $price
@@ -46,15 +47,10 @@ class Product extends ActiveRecord {
 
     public function beforeSave ($insert) {
         if (parent::beforeSave($insert)) {
-            Yii::$app->session->setFlash('event.before', 'eventBeforeSave');
+            $this->update_count += 1;
             return true;
         }
         return false;
-    }
-
-    public function afterSave ($insert, $changedAttributes) {
-        Yii::$app->session->setFlash('event.after', 'eventAfterSave');
-        parent::afterSave($insert, $changedAttributes);
     }
 
     /**
@@ -64,7 +60,7 @@ class Product extends ActiveRecord {
     {
         return [
             [['category_id', 'name'], 'required'],
-            [['category_id'], 'integer'],
+            [['category_id', 'update_count'], 'integer'],
             [['content', 'hit', 'new', 'sale'], 'string'],
             [['price'], 'number'],
             [['name', 'keywords', 'description', 'img'], 'string', 'max' => 255],

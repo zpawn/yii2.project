@@ -5,7 +5,6 @@ namespace app\modules\admin\controllers;
 use Yii;
 use app\modules\admin\models\Product;
 use app\modules\admin\models\ProductSearch;
-use yii\db\ActiveRecord;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
