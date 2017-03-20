@@ -3,6 +3,7 @@
 namespace app\modules\admin\models;
 
 use Yii;
+use yii\behaviors\AttributeBehavior;
 use yii\db\ActiveRecord;
 
 /**
@@ -37,20 +38,18 @@ class Product extends ActiveRecord {
         return [
             'image' => [
                 'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ], [
+                'class' => AttributeBehavior::className(),
+                'attributes' => [ ActiveRecord::EVENT_BEFORE_UPDATE => 'update_count' ],
+                'value' => function ($event) {
+                    return $this->update_count + 1;
+                }
             ]
         ];
     }
 
     public function getCategory () {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
-    }
-
-    public function beforeSave ($insert) {
-        if (parent::beforeSave($insert)) {
-            $this->update_count += 1;
-            return true;
-        }
-        return false;
     }
 
     /**
