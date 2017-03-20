@@ -5,6 +5,7 @@ namespace app\modules\admin\controllers;
 use Yii;
 use app\modules\admin\models\Product;
 use app\modules\admin\models\ProductSearch;
+use yii\db\ActiveRecord;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
@@ -83,6 +84,10 @@ class ProductController extends AppAdminController {
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
+        $model->on(ActiveRecord::EVENT_BEFORE_UPDATE, function ($event) {
+            Yii::$app->session->setFlash('event', 'eventBeforeSave');
+        });
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 

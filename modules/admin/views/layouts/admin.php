@@ -115,6 +115,14 @@ LtAppAsset::register($this);
         </div>
     <?php endif; ?>
 
+    <!-- Yii2: Event Handler -->
+    <?php if (Yii::$app->session->getFlash('event')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?= Yii::$app->session->getFlash('event') ?>
+        </div>
+    <?php endif; ?>
+
     <?= $content; ?>
 </div>
 
