@@ -85,10 +85,6 @@ class ProductController extends AppAdminController {
     {
         $model = $this->findModel($id);
 
-        $model->on(ActiveRecord::EVENT_BEFORE_UPDATE, function ($event) {
-            Yii::$app->session->setFlash('event', 'eventBeforeSave');
-        });
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             $model->image = UploadedFile::getInstance($model, 'image');

@@ -116,12 +116,20 @@ LtAppAsset::register($this);
     <?php endif; ?>
 
     <!-- Yii2: Event Handler -->
-    <?php if (Yii::$app->session->getFlash('event')): ?>
+    <?php if (Yii::$app->session->getFlash('event.before')): ?>
         <div class="alert alert-danger alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <?= Yii::$app->session->getFlash('event') ?>
+            <?= Yii::$app->session->getFlash('event.before') ?>
         </div>
     <?php endif; ?>
+
+    <?php if (Yii::$app->session->getFlash('event.after')): ?>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <?= Yii::$app->session->getFlash('event.after') ?>
+        </div>
+    <?php endif; ?>
+    <!-- ./Yii2: Event Handler -->
 
     <?= $content; ?>
 </div>

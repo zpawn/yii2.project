@@ -44,6 +44,19 @@ class Product extends ActiveRecord {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
+    public function beforeSave ($insert) {
+        if (parent::beforeSave($insert)) {
+            Yii::$app->session->setFlash('event.before', 'eventBeforeSave');
+            return true;
+        }
+        return false;
+    }
+
+    public function afterSave ($insert, $changedAttributes) {
+        Yii::$app->session->setFlash('event.after', 'eventAfterSave');
+        parent::afterSave($insert, $changedAttributes);
+    }
+
     /**
      * @inheritdoc
      */
