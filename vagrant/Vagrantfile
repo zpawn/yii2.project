@@ -1,0 +1,23 @@
+Vagrant.configure("2") do |config|
+  # Every Vagrant development environment requires a box. You can search for boxes at https://atlas.hashicorp.com/search.
+  config.vm.box = "brownell/xenial64lemp"
+
+  config.vm.provider "virtualbox" do |v|
+    v.name = 'yii2.dev'
+    v.memory = 1024
+    v.cpus = 1
+  end
+
+  # Network
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "private_network", ip: "192.168.100.103"
+  config.vm.synced_folder "./../", "/var/www/yii2.dev",
+      owner: "vagrant",
+      group: "www-data",
+      mount_options: ["dmode=775,fmode=775"]
+
+  # install dependencies
+  config.vm.provision "shell" do |s|
+    s.path = "./bootstrap.sh"
+  end
+end

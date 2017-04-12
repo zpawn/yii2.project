@@ -72,16 +72,16 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
         'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                'category/<id:\d+>/page/<page:\d>' => 'category/view',
-                'category/<id:\d+>' => 'category/view',
-
-                'product/<id:\d+>' => 'product/view',
-
-                'search' => 'category/search',
-            ],
+//            'enablePrettyUrl' => true,
+//            'showScriptName' => false,
+//            'rules' => [
+//                'category/<id:\d+>/page/<page:\d>' => 'category/view',
+//                'category/<id:\d+>' => 'category/view',
+//
+//                'product/<id:\d+>' => 'product/view',
+//
+//                'search' => 'category/search',
+//            ],
         ],
     ],
     'params' => $params,
