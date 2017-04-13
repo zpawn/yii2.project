@@ -12,13 +12,13 @@ class m170413_132805_init_phones_table extends Migration {
             'number' => $this->string()
         ]);
         echo "create ForeignKey customer.id->phone.customer_id \n";
-        $this->addForeignKey('fk-customer__phone', '{{%phone}}', 'customer_id', '{{%customer}}', 'id');
+        $this->addForeignKey('fk-customer__phone', 'crm_phone', 'customer_id', 'crm_customer', 'id');
     }
 
     public function down () {
 
         echo "drop ForeignKey customer.id->phone.customer_id \n";
-        $this->dropForeignKey('fk-customer__phone', '{{%phone}}');
+        $this->dropForeignKey('fk-customer__phone', 'crm_phone');
 
         echo "drop table 'phone' \n";
         $this->dropTable('crm_phone');
