@@ -24,6 +24,9 @@ $config = [
             'graphicsLibrary' => 'GD', //but really its better to use 'Imagick'
             'placeHolderPath' => '@webroot/upload/store/no-image.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
         ],
+        'crm' => [
+            'class' => 'app\modules\crm\Module',
+        ],
     ],
     'components' => [
         'request' => [
