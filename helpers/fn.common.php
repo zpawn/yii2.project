@@ -1,5 +1,7 @@
 <?php
 
-function debug ($val) {
-    echo '<pre>'; print_r($val); echo '</pre>';
+function debug ($val, $fn = false) {
+    echo '<pre>';
+    $fn ? var_dump($val) : print_r($val);
+    echo '</pre>';
 }
