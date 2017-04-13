@@ -26,6 +26,7 @@ $config = [
         ],
         'crm' => [
             'class' => 'app\modules\crm\Module',
+            'layout' => 'crm',
         ],
     ],
     'components' => [
