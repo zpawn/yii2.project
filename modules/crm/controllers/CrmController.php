@@ -9,7 +9,21 @@ namespace app\modules\crm\controllers;
 
 
 use yii\web\Controller;
+use yii\filters\VerbFilter;
 
 class CrmController extends Controller {
 
+    /**
+     * @inheritdoc
+     */
+    public function behaviors () {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
 }

@@ -6,27 +6,11 @@ use Yii;
 use app\modules\crm\models\Service;
 use app\modules\crm\models\ServiceSearch;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ServiceController implements the CRUD actions for Service model.
  */
-class ServiceController extends CrmController
-{
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+class ServiceController extends CrmController {
 
     /**
      * Lists all Service models.
